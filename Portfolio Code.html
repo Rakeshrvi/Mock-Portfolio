@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name] | SCM & Operations Professional</title>
+
+    <!-- Google Fonts: Montserrat for Headings, Lato for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Reset & Base Styles --- */
+        :root {
+            --white: #FFFFFF;
+            --dark-grey: #333333;
+            --primary-blue: #0D6EFD;
+            --light-blue: #6C9DFF;
+            --hover-blue: #0056b3;
+            --bg-light-grey: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            background-color: var(--white);
+            color: var(--dark-grey);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
+        h3 { font-size: 1.5rem; color: var(--dark-grey); margin-bottom: 10px; }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--hover-blue);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Animation --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Elements to animate on scroll would typically use JavaScript (Intersection Observer), 
+           but for this mock-up, we'll apply a simple load animation. */
+        .animated {
+            animation: fadeInUp 1s ease-out;
+        }
+
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar .nav-links a {
+            font-weight: 600;
+            color: var(--dark-grey);
+        }
+        
+        .navbar .nav-links a:hover, .navbar .nav-links a.active {
+            color: var(--primary-blue);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--hover-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* --- Hero Section --- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%"><circle cx="10" cy="10" r="1" fill="%236C9DFF" fill-opacity="0.3"/><circle cx="50" cy="30" r="1.5" fill="%236C9DFF" fill-opacity="0.3"/><circle cx="90" cy="20" r="0.8" fill="%236C9DFF" fill-opacity="0.3"/><circle cx="30" cy="70" r="2" fill="%236C9DFF" fill-opacity="0.3"/><circle cx="70" cy="90" r="1.2" fill="%236C9DFF" fill-opacity="0.3"/></svg>');
+            background-size: cover;
+        }
+        
+        #home .hero-content {
+            max-width: 800px;
+        }
+
+        #home h1 {
+            color: var(--dark-grey);
+            margin-bottom: 20px;
+        }
+        
+        #home .sub-heading {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #home .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* --- About Section --- */
+        #about {
+            background-color: var(--bg-light-grey);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 0 0 250px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--light-blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .about-text strong {
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* --- Experience Section --- */
+        .experience-card {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-left: 5px solid var(--primary-blue);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-card .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .experience-card .title {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+        }
+
+        .experience-card .duration {
+            font-style: italic;
+            color: #666;
+        }
+        
+        .experience-card .company {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-card ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .experience-card ul li i {
+            color: var(--primary-blue);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        /* --- Skills Section --- */
+        #skills {
+            background-color: var(--bg-light-grey);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 10px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .skill-category ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skill-category ul li i {
+            color: var(--primary-blue);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h4 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            margin-bottom: 10px;
+        }
+
+        .project-card p strong {
+            color: var(--dark-grey);
+        }
+        
+        /* --- Education Section --- */
+        #education {
+             background-color: var(--bg-light-grey);
+        }
+
+        .education-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .education-block {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+        }
+
+        .education-block h3 {
+            color: var(--primary-blue);
+        }
+
+        .education-block p {
+            margin: 5px 0;
+        }
+        
+        .education-block .institution {
+            font-weight: 700;
+        }
+
+        /* --- Contact Section --- */
+        #contact .container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .social-links {
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            font-size: 2rem;
+            margin: 0 15px;
+            color: var(--dark-grey);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-grey);
+            color: #ccc;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none; /* Simplistic approach for mock-up; a real site would use a hamburger menu */
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-card .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================= Navigation Bar ======================= -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">[Your Name]</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="/path/to/your/resume.pdf" class="btn btn-primary" download>Download Resume</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ======================= Hero Section ======================= -->
+        <section id="home">
+            <div class="container animated hero-content">
+                <h1>Bridging Engineering Precision with Supply Chain Strategy.</h1>
+                <p class="sub-heading">
+                    An MBA graduate in Operations & SCM, leveraging a background in Electrical Engineering to optimize complex supply chains in the Renewable Energy sector.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#experience" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= About Me Section ======================= -->
+        <section id="about">
+            <div class="container animated">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/250" alt="Professional Headshot of [Your Name]">
+                    </div>
+                    <div class="about-text">
+                        <h3>A Passion for Optimization, from Circuits to Supply Chains</h3>
+                        <p>My journey began in the world of <strong>Electrical & Electronics Engineering</strong>, where I developed a deep appreciation for systems, logic, and precision. Driven by a desire to apply this analytical mindset to larger, more dynamic systems, I pursued an <strong>MBA in Operations, Logistics & Supply Chain Management</strong>, enhanced with a specialization in <strong>Business Analytics</strong>.</p>
+                        <p>This unique combination allows me to not only understand the technical intricacies of products—especially in the renewable energy space—but also to design, manage, and optimize the end-to-end supply chain that brings them to life. I thrive on solving complex logistical puzzles and using data to drive efficient, cost-effective, and resilient supply chain solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Experience Section ======================= -->
+        <section id="experience">
+            <div class="container animated">
+                <h2>Professional Experience</h2>
+                <div class="experience-card">
+                    <div class="header">
+                        <div>
+                            <h3 class="title">Regional Material Coordinator</h3>
+                        </div>
+                        <div class="duration">Month, Year - Present (1+ Years)</div>
+                    </div>
+                    <p class="company">L&T Construction (Renewable Energy Business)</p>
+                    <ul>
+                        <li><i class="fas fa-solar-panel"></i>Spearheaded the end-to-end material management and logistics for <strong>4 major solar power plant projects</strong>, ensuring a seamless flow of components from supplier to site.</li>
+                        <li><i class="fas fa-dollar-sign"></i>Successfully managed a complex import portfolio valued at over <strong>₹750 Crores</strong>, expertly navigating <strong>FOB and CIF</strong> incoterms to optimize cost and delivery timelines.</li>
+                        <li><i class="fas fa-handshake"></i>Cultivated and managed strategic partnerships with a diverse network of over <strong>60 reputed domestic and international suppliers</strong>, ensuring quality and reliability.</li>
+                        <li><i class="fas fa-chart-line"></i>Implemented data-driven coordination frameworks between project sites, procurement teams, and logistics partners, resulting in improved inventory accuracy and reduced lead times.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Skills Section ======================= -->
+        <section id="skills">
+            <div class="container animated">
+                <h2>Core Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cogs"></i> Supply Chain Management</h3>
+                        <ul>
+                            <li><i class="fas fa-shopping-cart"></i>Procurement & Sourcing</li>
+                            <li><i class="fas fa-users"></i>Vendor Management</li>
+                            <li><i class="fas fa-truck"></i>Logistics & Transportation (FOB/CIF)</li>
+                            <li><i class="fas fa-boxes"></i>Inventory Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-pie"></i> Analytical & Technical</h3>
+                        <ul>
+                            <li><i class="fas fa-search-dollar"></i>Business Analytics & Reporting</li>
+                            <li><i class="fas fa-database"></i>Data-Driven Decision Making</li>
+                            <li><i class="fas fa-project-diagram"></i>Process Improvement</li>
+                            <li><i class="fas fa-laptop-code"></i>ERP Systems (SAP MM)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-star"></i> Domain & Soft Skills</h3>
+                        <ul>
+                            <li><i class="fas fa-solar-panel"></i>Renewable Energy Sector</li>
+                            <li><i class="fas fa-tasks"></i>Project Coordination</li>
+                            <li><i class="fas fa-sitemap"></i>Stakeholder Management</li>
+                            <li><i class="fas fa-bolt"></i>Electrical Engineering Fundamentals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Projects Section ======================= -->
+        <section id="projects">
+            <div class="container animated">
+                <h2>Key Project Involvement</h2>
+                <!-- Note: This is a static grid. For a real site, a JS-powered carousel would be ideal. -->
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h4>Project 'Surya' - 300MW Solar Park</h4>
+                        <p><strong>Challenge:</strong> Coordinating multi-origin shipments of solar modules and inverters for a time-sensitive construction schedule.</p>
+                        <p><strong>My Role:</strong> Managed import logistics and customs clearance for over ₹200 Crores of critical equipment.</p>
+                        <p><strong>Outcome:</strong> Achieved 99% on-time delivery, preventing project delays due to material shortages.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>Project 'Prakash' - 250MW Facility</h4>
+                        <p><strong>Challenge:</strong> Sourcing high-efficiency components amidst global supply chain disruptions.</p>
+                        <p><strong>My Role:</strong> Diversified supplier base and negotiated favorable terms, ensuring material availability.</p>
+                        <p><strong>Outcome:</strong> Mitigated supply risks and secured components within budget, maintaining project margins.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>Project 'Kiran' - 150MW Plant</h4>
+                        <p><strong>Challenge:</strong> Optimizing domestic transportation logistics from port to a remote project site.</p>
+                        <p><strong>My Role:</strong> Developed a multi-modal logistics plan involving sea and road transport.</p>
+                        <p><strong>Outcome:</strong> Reduced inland freight costs by 12% and improved delivery predictability.</p>
+                    </div>
+                    <div class="project-card">
+                        <h4>Project 'Urja' - 100MW Rooftop Solar</h4>
+                        <p><strong>Challenge:</strong> Managing inventory for decentralized installations across multiple urban locations.</p>
+                        <p><strong>My Role:</strong> Implemented a just-in-time (JIT) inventory system using a centralized ERP dashboard.</p>
+                        <p><strong>Outcome:</strong> Minimized warehousing costs and reduced material surplus by 15%.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======================= Education Section ======================= -->
+        <section id="education">
+            <div class="container animated">
+                <h2>Education</h2>
+                <div class="education-container">
+                    <div class="education-block">
+                        <h3>Master of Business Administration (MBA)</h3>
+                        <p>Operations, Logistics & SCM, Business Analytics</p>
+                        <p class="institution">[University Name], [City]</p>
+                        <p class="duration">[Year of Graduation]</p>
+                    </div>
+                    <div class="education-block">
+                        <h3>Bachelor of Engineering (B.E.)</h3>
+                        <p>Electrical & Electronics Engineering</p>
+                        <p class="institution">[University Name], [City]</p>
+                        <p class="duration">[Year of Graduation]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================= Contact Section ======================= -->
+        <section id="contact">
+            <div class="container animated">
+                <h2>Let's Connect</h2>
+                <p>I'm always open to discussing new opportunities or challenges in the supply chain world. Feel free to reach out.</p>
+                <form class="contact-form" action="mailto:your.email@example.com" method="post" enctype="text/plain">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:your.email@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================= Footer ======================= -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 [Your Name]. All Rights Reserved. | Designed with a focus on clean, user-centric experience.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
